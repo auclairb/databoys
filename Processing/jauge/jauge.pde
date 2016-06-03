@@ -1,30 +1,29 @@
+float degree = 0;
+
 void setup() {
   size(800, 800);
-  noLoop(); 
+  //noLoop(); 
   //readData();
 }
 
 void draw() {
-
   background(255);
   noFill();
   arc(80, 60, 100, 100, PI, 2*PI);
-  needle(50,80,60);
+  line(30,60,130,60);
+  needle(50,degree,80,60);
+  if(degree <180){
+
+    degree ++;
+  }
 }
 
-void needle(int radius, float x_center, float y_center) {
+void needle(int radius, float deg, float x_center, float y_center) {
   float x_peak = x_center - radius;
   float y_peak = y_center;
-  for (int i=0; i<360; i++) {
-    line(x_peak, y_peak, x_center, y_center);
-    x_peak = x_center + radius*cos(PI + radians(i));
-    y_peak = y_center + radius*sin(PI + radians(i));
-    try{
-      Thread.sleep(500);
-    }catch(InterruptedException e){
-      System.out.println("Got Interrupted !");
-    }
-  }
+  x_peak = x_center + radius*cos(PI + radians(deg));
+  y_peak = y_center + radius*sin(PI + radians(deg));
+  line(x_peak, y_peak, x_center, y_center);
 }
 
 void mousePressed() {
