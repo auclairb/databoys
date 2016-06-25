@@ -5,6 +5,13 @@ ArrayList<TextBox> textBoxes = new ArrayList<TextBox>();
 ArrayList<Menu> menus = new ArrayList<Menu>();
 int indexCurrentlySelected = -1;
 
+Person p;
+String gender;
+String age;
+String race;
+String profession;
+ArrayList<String> interests = new ArrayList<String>();
+
 void setup() {
   size(800, 800);
   
@@ -62,6 +69,7 @@ void setup() {
   menus.get(4).addButton("Lawyer", 10);
   menus.get(4).addButton("Doctor", 10);
   
+  p = new Person(500, 200, 200, 400);
 }
 
 void draw() {
@@ -76,6 +84,7 @@ void draw() {
       menus.get(i).showMenu();
     }
   }
+  p.drawBasicForm();
 }
 
 void mousePressed() {
@@ -136,8 +145,26 @@ void checkSelectedButtonInMenu() {
   }
   
   //Uses the index from the previous step to make the necessary changes
-  if (menu_index_change != -1 && button_index_change != -1)
+  if (menu_index_change != -1 && button_index_change != -1) {
+    String menu_label = menus.get(menu_index_change).getFatherLabel();
     menus.get(menu_index_change).selectButton(button_index_change);
+    
+    if (menu_label == "Gender") {
+      p.setGender(menus.get(menu_index_change).getButtons().get(button_index_change).getLabel());
+    }
+    else if (menu_label == "Age") {
+      p.setAge(menus.get(menu_index_change).getButtons().get(button_index_change).getLabel());
+    }
+    else if (menu_label == "Race") {
+      p.setRace(menus.get(menu_index_change).getButtons().get(button_index_change).getLabel());
+    }
+    else if (menu_label == "Profession") {
+      p.setProfession(menus.get(menu_index_change).getButtons().get(button_index_change).getLabel());
+    }
+    else if (menu_label == "Interests") {
+      p.addInterest(menus.get(menu_index_change).getButtons().get(button_index_change).getLabel());
+    }
+  }
 }
 
 

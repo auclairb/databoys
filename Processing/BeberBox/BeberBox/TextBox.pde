@@ -67,6 +67,9 @@ class TextBox {
   public int getH() {
     return h;
   }
+  public String getLabel() {
+    return text;
+  }
   
   
 }

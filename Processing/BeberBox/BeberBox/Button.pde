@@ -114,4 +114,8 @@ class Button {
   public int getSize() {
     return size;
   }
+  
+  public String getLabel() {
+    return label;
+  }
 }

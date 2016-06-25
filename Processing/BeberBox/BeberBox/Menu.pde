@@ -73,6 +73,9 @@ class Menu {
   public TextBox getFather() {
     return father;
   }
+  public String getFatherLabel() {
+    return father.getLabel();
+  }
   
   
   
