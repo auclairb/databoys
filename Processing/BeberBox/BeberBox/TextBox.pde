@@ -7,7 +7,7 @@ class TextBox {
   private boolean selected = false;
   private boolean hovered = false;
   
-  public TextBox(String text, int h, int w, int x, int y) {
+  public TextBox(String text, int x, int y, int w, int h) {
     this.h = h;
     this.w = w;
     this.text = text;
@@ -32,9 +32,11 @@ class TextBox {
     
     fill(color(0));
     float textS = h/2;
+    if (textS > 20)
+      textS = 20;
     textSize(textS);
     float textLength = text.length()*textS/2;
-    text(text, x + (w - textLength)/2, y + 3*h/4);
+    text(text, x + (w - textLength)/2, y + 2.1*h/4);
   }
   
   public boolean isSelected() {
