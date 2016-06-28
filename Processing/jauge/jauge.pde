@@ -20,7 +20,7 @@ float fun2_3_mal = 72.91759;
 float amb2_3_fem = 70.96;
 float amb2_3_mal = 79.15367;
 
-float speed = 80;
+float speed = 180;
 float radius = 200;
 float x_center = 300;
 float y_center = 300;
@@ -30,6 +30,10 @@ float gauge_depth = 10;
 float alpha = 0.1;
 Gauge attr_fem_gauge = new Gauge(radius, x_center, y_center, attr1_s_fem, attr2_3_mal, "Attractiveness for men", "Women expecting men attractiveness","Men thinking women expect attractiveness");
 Gauge attr_mal_gauge = new Gauge(radius, x_center, y_center + 2*radius, attr1_s_mal, attr2_3_fem, "Attractiveness for women", "Women thinking men expect attractiveness", "Men expecting women attractiveness");
+
+/*Gauge attr_fem_gauge = new Gauge(radius, x_center, y_center, 72, 93, "Attractiveness for men", "Women expecting men attractiveness","Men thinking women expect attractiveness");
+Gauge attr_mal_gauge = new Gauge(radius, x_center, y_center + 2*radius, 26, 88, "Attractiveness for women", "Women thinking men expect attractiveness", "Men expecting women attractiveness");
+*/
 //Gauge gauge1 = new Gauge(radius,x_center,y_center+400,30,70, "Sincere");
 //Gauge gauge2 = new Gauge(radius,x_center,y_center+800,30,70, "Intelligent");
 //Gauge gauge3 = new Gauge(radius,x_center,y_center+1200,30,70, "Funny");
@@ -56,8 +60,7 @@ class Gauge {
   float deg_1 = 0;
   float deg_2 = 0;
   float radius, x_center, y_center, red_1, green_1, blue_1, percent_limit_1, red_2, green_2, blue_2, percent_limit_2, proportion;
-  float percent_1 = 0;
-  float percent_2 = 0;
+  float percent = 0;
   String title;
   String description_1;
   String description_2;
@@ -87,12 +90,12 @@ class Gauge {
     float y_peak = y_center + radius*sin(PI + radians(1.8*percent));
     float x_middle = x_center + radius*(1-proportion)*cos(PI + radians(1.8*percent));
     float y_middle = y_center + radius*(1-proportion)*sin(PI + radians(1.8*percent));
-    float x_far = x_center + radius*(1-2*proportion)*cos(PI + radians(1.8*percent));
-    float y_far = y_center + radius*(1-2*proportion)*sin(PI + radians(1.8*percent));
-    strokeWeight(3);
+    float x_far = x_center + radius*(1-2.5*proportion)*cos(PI + radians(1.8*percent));
+    float y_far = y_center + radius*(1-2.5*proportion)*sin(PI + radians(1.8*percent));
+    strokeWeight(2);
     line(x_peak, y_peak, x_middle, y_middle);
     strokeWeight(1);
-    textFont(f, 16);
+    textFont(f, 27);
     fill(0);
     textAlign(CENTER);
     text((int)percent, x_far, y_far);
@@ -155,18 +158,17 @@ class Gauge {
     fill(R,G,B);
     rect(x,y,35,20);
     noFill();
+    textAlign(LEFT);
+    text(des, x + 45, y + 15);
   }
   
   void boxes(){
-    float x_1 = x_center + radius + gauge_border + 10;
+    float x_1 = x_center + radius + gauge_border + 30;
     float y_1 = y_center - radius*2/3;
-    float x_2 = x_center + radius + gauge_border + 10;
+    float x_2 = x_center + radius + gauge_border + 30;
     float y_2 = y_center - radius/3;
     box(x_1, y_1, red_1, green_1, blue_1, description_1);
-    textAlign(LEFT);
-    text(description_1, x_1 + 45, y_1 + 15);
     box(x_2, y_2, red_2, green_2, blue_2, description_2);
-    text(description_2, x_2 + 45, y_2 + 15);
   }
   
   void update() {
@@ -183,6 +185,7 @@ class Gauge {
     arc(x_center, y_center, 2*radius, 2*radius, PI, 2*PI, PIE);
     noFill();
     percents();
+    /*
     if (deg_1 + percent_limit_1/speed <= percent_limit_1*1.8) {
       deg_1 += percent_limit_1/speed;
     }
@@ -191,6 +194,17 @@ class Gauge {
       deg_2 += percent_limit_2/speed;
     }
     needle(gauge_width, deg_2, red_2, green_2, blue_2);
+    */
+    
+    if (percent < 100) {
+      percent ++;
+      deg_1 = percent / 100 * percent_limit_1 * 1.8;
+      deg_2 = percent / 100 *percent_limit_2 * 1.8;
+    }
+    needle(gauge_width, deg_1, red_1, green_1, blue_1);
+    needle(gauge_width, deg_2, red_2, green_2, blue_2);
+    
+    
     fill(255);
     ellipse(x_center, y_center, gauge_width, gauge_width);
     noFill();
