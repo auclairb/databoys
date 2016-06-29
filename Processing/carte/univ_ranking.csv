@@ -1,0 +1,187 @@
+;university;match;latitude;longitude
+1;SEAS;0.0454545454545;1;44
+2;COOPER UNION;0.0454545454545;-71;30
+3;Hamilton College;0.0454545454545;-72;34
+4;Columbia Business School;0.047619047619;-71;33
+5;Novosibirsk State University;0.047619047619;88;45
+6;Rice;0.047619047619;-90;22
+7;Stanford;0.047619047619;-119;29
+8;charles university;0.047619047619;18;41
+9;HEC FRance;0.05;5;40
+10;SOGANG UNIVERSITY(KOREA);0.05;135;32
+11;Northwestern University;0.05;-85;32
+12;nyu;0.05;-71;33
+13;Colgate University;0.0526315789474;-72;35
+14;University of Delaware;0.0555555555556;-74;33
+15;GA Tech;0.0555555555556;-80;26
+16;University of Illinois/Champaign;0.0555555555556;-85;30
+17;University of Karlsruhe/Germany;0.0555555555556;12;41
+19;University of Wisconsin-Madison;0.0555555555556;-84;35
+20;The American University;0.0555555555556;5;40
+21;Shiyan University;0.0555555555556;120;30
+22;Supaero (France);0.0555555555556;5;36
+23;University of Michigan-Ann Arbor;0.0555555555556;-79;34
+24;Lafayette College;0.0555555555556;-73;33
+25;University of Vermont;0.0606060606061;-68;35
+26;Connecticut College;0.0645161290323;-68;33
+27;U. del Rosario;0.0666666666667;-68;5
+28;University of the Philippines;0.0666666666667;135;12
+29;Harbin Medical University;0.0666666666667;132;40
+30;Delhi University;0.0689655172414;85;25
+31;University of Pennsylvania;0.0714285714286;-72;32
+32;New York University;0.0714285714286;-71;33
+33;Holy Cross College;0.0714285714286;-68;33.5
+34;UC Irvine;0.0714285714286;-119;25
+35;National Taiwan University;0.0714285714286;134;21
+37;Brown;0.0757575757576;-67;34
+38;UCLA;0.0757575757576;-119;22
+39;Cornell University;0.078125;-72;34
+40;Tianjin University in China;0.0909090909091;127;34
+41;Beijing University;0.0909090909091;125;34
+42;University of Kansas;0.0909090909091;-90;30
+43;Columbia;0.0909090909091;-71;33
+45;University of Reading;0.0909090909091;1;44
+47;MIT;0.0952380952381;-71;33
+48;Brandeis University;0.0952380952381;-66;35
+49;University of Paris;0.0952380952381;5;40
+50;REC;0.0952380952381;-111;25
+51;Tokyo Woman's Christian University;0.0952380952381;150;32
+52;tech school;0.0952380952381;99;21
+54;Universidad Iberoamericana;0.0952380952381;-96;15
+58;University of International Business  & Economics;0.1;125;34
+59;lipscomb university;0.1;-85;28
+60;National University of Singapore;0.1;114;5
+62;Occidental College;0.105263157895;-119;25
+63;Georgetown University;0.107142857143;-74;29
+64;SUNY Stony Brook;0.111111111111;-71;33
+65;Hebrew University;0.111111111111;40;27
+66;Binghamton University;0.111111111111;-72;33
+67;SUNY Binghamton;0.111111111111;-72;33
+68;Cal Berkeley;0.111111111111;-120;27
+69;Harvard University;0.114285714286;-71;33
+70;University of Heidelberg;0.125;12;41
+71;Bennington College;0.125;-67;35
+72;Rutgers University;0.130434782609;-71;33
+73;UC Santa Cruz;0.133333333333;-119;26
+75;UM;0.133333333333;-110;36
+76;American University;0.133333333333;-74;30
+77;U.C. Berkeley;0.136363636364;-120;27
+78;Naples;0.136363636364;17.5;33.5
+79;Nirma Institute of Technology-India;0.136363636364;81;20
+80;Oxford University;0.136363636364;1;43.5
+82;University of Toronto;0.139534883721;-75;35
+83;university of pennsylvania;0.142857142857;-71;33
+84;Miami University;0.142857142857;-79;30
+85;Cal State Univ.;0.142857142857;-119;22
+86;Vanderbilt University;0.142857142857;-81;28
+88;Purdue;0.142857142857;-82;31
+90;Princeton U.;0.142857142857;0;0
+91;Saint Mary's College of California;0.142857142857;0;0
+92;SUNY Albany;0.142857142857;0;0
+93;Sarah Lawrence College;0.142857142857;0;0
+94;University of Michigan;0.147058823529;0;0
+95;Harvard College;0.15;0;0
+96;University of Texas;0.15;0;0
+97;Penn State University;0.151515151515;0;0
+98;Rutgers College;0.162790697674;0;0
+99;Brown University;0.166666666667;0;0
+100;Rice University;0.166666666667;0;0
+101;University of Florida;0.166666666667;0;0
+102;Hampshire College;0.166666666667;0;0
+103;Duquesne University;0.166666666667;0;0
+104;University of Akron;0.166666666667;0;0
+105;China;0.166666666667;0;0
+106;Fordham University;0.166666666667;0;0
+107;George Washington University;0.166666666667;0;0
+108;National University Of Singapore;0.166666666667;0;0
+109;Berklee College Of Music;0.166666666667;0;0
+110;John Hopkins;0.166666666667;0;0
+111;Ateneo de Manila University - Philippines;0.166666666667;0;0
+112;Harvard;0.173076923077;0;0
+113;Wesleyan University;0.175;0;0
+114;Oxford;0.181818181818;0;0
+115;S.V Regional Engineering College;0.181818181818;0;0
+116;Cooper Union;0.181818181818;0;0
+117;colby college;0.190476190476;0;0
+118;Emory University;0.190476190476;0;0
+119;U of  Michigan;0.190476190476;0;0
+120;UC Berkeley;0.193181818182;0;0
+121;University of Pennsylvania;0.19512195122;0;0
+122;Illinois;0.2;0;0
+123;Rizvi College of Architecture;0.2;0;0
+124;university of wisconsin/la crosse;0.2;0;0
+125;Universidad de Costa Rica;0.2;0;0
+126;U of Vermont;0.2;0;0
+127;Tufts;0.2;0;0
+128;NYU;0.205128205128;0;0
+129;School of the Arts;0.210526315789;0;0
+130;Washington University in St. Louis;0.214285714286;0;0
+131;William and Mary;0.214285714286;0;0
+132;Univ of Pennsylvania;0.214285714286;0;0
+133;Rutgers University - New Brunswick;0.214285714286;0;0
+134;University of Tennessee;0.214285714286;0;0
+135;Engineering;0.214285714286;0;0
+136;University of California at Santa Barbara;0.214285714286;0;0
+137;Bucknell University;0.217391304348;0;0
+138;Kunitachi College of Music (in Japan);0.222222222222;0;0
+139;Biological Sciences;0.222222222222;0;0
+140;Univ of New Mexico;0.222222222222;0;0
+141;Jesus and Mary College;0.222222222222;0;0
+142;University of Cologne;0.227272727273;0;0
+143;LUISS;0.227272727273;0;0
+144;Georgetown;0.227272727273;0;0
+145;Florida International University;0.233333333333;0;0
+146;Columbia College;0.237288135593;0;0
+147;RPI;0.238095238095;0;0
+148;UNLV;0.238095238095;0;0
+149;Harvey Mudd College (Physics);0.238095238095;0;0
+150;CSUN;0.25;0;0
+151;Notre Dame;0.25;0;0
+152;Univeristy of Barcelona;0.25;0;0
+153;Smith College;0.254237288136;0;0
+154;Swarthmore College;0.266666666667;0;0
+155;washington university in st louis;0.266666666667;0;0
+156;University of Washington;0.266666666667;0;0
+157;Yale;0.267441860465;0;0
+158;Texas State University;0.272727272727;0;0
+159;University of Genova;0.272727272727;0;0
+160;Ecole Normale Sup´è__rieure;0.272727272727;0;0
+161;Cornell;0.272727272727;0;0
+162;California State University Los Angeles;0.272727272727;0;0
+163;Tufts University;0.276595744681;0;0
+164;Univ. of Bombay;0.277777777778;0;0
+165;GW;0.277777777778;0;0
+166;ecole polytechnique;0.277777777778;0;0
+167;ucla;0.277777777778;0;0
+168;Case Western Reserve University;0.285714285714;0;0
+169;Washington U. in St. Louis;0.285714285714;0;0
+170;Amherst College;0.291666666667;0;0
+171;Texas A&M;0.3;0;0
+172;Cambridge University;0.3;0;0
+173;Universidad de Chile;0.318181818182;0;0
+174;Bocconi University Milan;0.333333333333;0;0
+175;Boston College;0.333333333333;0;0
+176;harvard;0.333333333333;0;0
+177;Bombay;0.333333333333;0;0
+178;Fu Jen Catholic University;0.333333333333;0;0
+179;Yale University;0.333333333333;0;0
+180;University of North Carolina at Charlotte;0.333333333333;-77;27
+181;University of Chicago;0.333333333333;-84;33
+182;Cagliari - Italy;0.333333333333;11;33
+183;Princeton;0.357142857143;-71;32
+184;Holy Cross;0.357142857143;-67;34
+185;Loyola College;0.363636363636;90;12
+186;Bowdoin College;0.368421052632;-65;36
+187;University of Oregon;0.368421052632;-117;34
+188;warsaw university;0.4;24;43
+189;Universidad de los Andes;0.4;-67;5
+190;Columbia University;0.418604651163;-71;33
+191;Mary Baldwin College;0.421052631579;-69;33
+192;Oberlin College;0.428571428571;-77;32
+193;Augustana College;0.444444444444;-85;33
+194;Loyola College in Maryland;0.444444444444;-71;31
+195;tufts;0.466666666667;-66;34
+196;Monash University - Australia;0.5;147;-32
+197;Ecole Polytechnique (France);0.5;5;40
+198;school of social sciences in uruguay;0.555555555556;-40;-21
+199;Yeshiva University;0.666666666667;-71;33
