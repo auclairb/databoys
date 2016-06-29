@@ -9,6 +9,10 @@ PFont bold_f;
 
 String s = "of positive answers after the first date";
 
+boolean menOver = false;
+boolean womenOver = false;
+boolean bothOver = false;
+
 //Gauge cross = new Gauge(100,100,23.,"bla","bla","cross.svg",100,100);
 
 void setup() {
@@ -33,7 +37,25 @@ void draw() {
   rect(50, 100, 600, 90, 7);
   fill(0,0,205);
   textFont(bold_f,36);
-  text("Field of study/Work by hotness",60,120,590,90);
+  text("Field of study / work by hotness",60,120,590,90);
+  
+  fill(135, 206, 250);
+  rect(800, 100, 90, 90);
+  fill(0,0,205);
+  textFont(bold_f,36);
+  text("Men",810,120,90,90);
+  
+  fill(135, 206, 250);
+  rect(890, 100, 140, 90);
+  fill(0,0,205);
+  textFont(bold_f,36);
+  text("Women",900,120,130,90);
+  
+  fill(135, 150, 250);
+  rect(1030, 100, 110, 90);
+  fill(0,0,205);
+  textFont(bold_f,36);
+  text("Both",1040,120,90,90);
   
   shape(doctor, 0, 400, 150, 150);
   fill(0, 0, 0);
@@ -47,8 +69,8 @@ void draw() {
   text("30% ", 550, 430, 50, 50);
   text(s, 550, 470, 200, 200);
   
-  shape(politician, 800, 400, 150, 150);
-  text("3rd Medical students", 1000, 400);
+  shape(politician, 800, 370, 200, 200);
+  text("3rd Politic students", 1000, 400);
   text("20% ", 1000, 430, 50, 50);
   text(s, 1000, 470, 200, 200);
   
