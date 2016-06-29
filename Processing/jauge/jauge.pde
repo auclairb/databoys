@@ -21,8 +21,8 @@ float amb2_3_fem = 70.96;
 float amb2_3_mal = 79.15367;
 
 float speed = 180;
-float radius = 130;
-float x_center = 350;
+float radius = 100;
+float x_center = radius + 50;
 float y_center = 180;
 float prop = 0.1;
 float gauge_width = 5;
@@ -31,21 +31,21 @@ float percent_size = 15;
 float title_size = 30;
 float legend_size = 16;
 float count_size = 20;
-float margin = 1.65*radius;
+float margin = 1.8*radius;
 
-float x_right = x_center + 6*radius;
+float x_right = x_center + 6*radius + 10;
 float y_sinc = y_center + margin;
 float y_intel = y_sinc + margin;
 float y_fun = y_intel + margin;
 float y_amb = y_fun + margin;
 
-Gauge attr_fem_gauge = new Gauge(radius, x_center, y_center, attr2_3_fem, attr1_s_mal, "Attractive women", "Women thinking attractiveness matters to men", "Men seeking attractive women");
+Gauge attr_fem_gauge = new Gauge(radius, x_center, y_center, attr2_3_fem, attr1_s_mal, "Attractive women", "Women thinking attractiveness matters \nto men", "Men seeking attractive women");
 Gauge attr_mal_gauge = new Gauge(radius, x_right, y_center, attr1_s_fem, attr2_3_mal, "Attractive men", "Women seeking attractive men","Men thinking attractiveness matters to women");
 
 Gauge sinc_fem_gauge = new Gauge(radius, x_center, y_sinc, sinc2_3_fem, sinc1_s_mal, "Sincere women", "Women thinking sincerity matters to men", "Men seeking sincere women");
 Gauge sinc_mal_gauge = new Gauge(radius, x_right, y_sinc, sinc1_s_fem, sinc2_3_mal, "Sincere men", "Women seeking sincere men","Men thinking sincerity matters to women");
 
-Gauge intel_fem_gauge = new Gauge(radius, x_center, y_intel, intel2_3_fem, intel1_s_mal, "Intelligent women", "Women thinking intelligence matters to men", "Men seeking intelligent women");
+Gauge intel_fem_gauge = new Gauge(radius, x_center, y_intel, intel2_3_fem, intel1_s_mal, "Intelligent women", "Women thinking intelligence matters \nto men", "Men seeking intelligent women");
 Gauge intel_mal_gauge = new Gauge(radius, x_right, y_intel, intel1_s_fem, intel2_3_mal, "Intelligent men", "Women seeking intelligent men","Men thinking intelligence matters to women");
 
 Gauge fun_fem_gauge = new Gauge(radius, x_center, y_fun, fun2_3_fem, fun1_s_mal, "Funny women", "Women thinking humour matters to men", "Men seeking funny women");
@@ -58,7 +58,7 @@ PFont f;
 PFont bold_f;
 
 void setup() {
-  fullScreen();
+  size(1280,1024);
   surface.setResizable(true);
   f = createFont("Arial", 16, true);
   bold_f = createFont("Arial Bold", 16, true);
@@ -159,8 +159,8 @@ class Gauge {
     float y_2 = y_center + width*sin(3*PI/2 + radians(deg)) + gauge_depth*sin(radians(deg));
     float x_peak = x_center + radius*cos(PI + radians(deg));
     float y_peak = y_center + radius*sin(PI + radians(deg));
-    float x_far = x_center + (radius + gauge_border)*(1+proportion)*cos(PI + radians(deg));
-    float y_far = y_center + (radius + gauge_border)*(1+proportion)*sin(PI + radians(deg));
+    float x_far = x_center + (radius + gauge_border)*(1+1.3*proportion)*cos(PI + radians(deg));
+    float y_far = y_center + (radius + gauge_border)*(1+1.3*proportion)*sin(PI + radians(deg));
     fill(R, G, B);
     triangle(x_1, y_1, x_2, y_2, x_peak, y_peak);
     fill(R, G, B, 130);
@@ -188,7 +188,7 @@ class Gauge {
     float x_1 = x_center + radius + gauge_border + 30;
     float y_1 = y_center - radius*2/3;
     float x_2 = x_center + radius + gauge_border + 30;
-    float y_2 = y_center - radius/3;
+    float y_2 = y_center - radius/4;
     box(x_1, y_1, red_1, green_1, blue_1, description_1);
     box(x_2, y_2, red_2, green_2, blue_2, description_2);
   }
