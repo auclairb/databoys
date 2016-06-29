@@ -20,10 +20,9 @@ float fun2_3_mal = 72.91759;
 float amb2_3_fem = 70.96;
 float amb2_3_mal = 79.15367;
 
-float speed = 180;
 float radius = 100;
 float x_center = radius + 50;
-float y_center = 180;
+float y_center = 220;
 float prop = 0.1;
 float gauge_width = 5;
 float gauge_depth = 5;
@@ -39,34 +38,79 @@ float y_intel = y_sinc + margin;
 float y_fun = y_intel + margin;
 float y_amb = y_fun + margin;
 
-Gauge attr_fem_gauge = new Gauge(radius, x_center, y_center, attr2_3_fem, attr1_s_mal, "Attractive women", "Women thinking attractiveness matters \nto men", "Men seeking attractive women");
-Gauge attr_mal_gauge = new Gauge(radius, x_right, y_center, attr1_s_fem, attr2_3_mal, "Attractive men", "Women seeking attractive men","Men thinking attractiveness matters to women");
+Gauge attr_fem_gauge = new Gauge(radius, x_center, y_center, attr2_3_fem, attr1_s_mal, "Attractive women", "Women thinking attractiveness matters \nto men", "Men seeking attractive women",false);
+Gauge attr_mal_gauge = new Gauge(radius, x_right, y_center, attr1_s_fem, attr2_3_mal, "Attractive men", "Women seeking attractive men","Men thinking attractiveness matters to women",true);
 
-Gauge sinc_fem_gauge = new Gauge(radius, x_center, y_sinc, sinc2_3_fem, sinc1_s_mal, "Sincere women", "Women thinking sincerity matters to men", "Men seeking sincere women");
-Gauge sinc_mal_gauge = new Gauge(radius, x_right, y_sinc, sinc1_s_fem, sinc2_3_mal, "Sincere men", "Women seeking sincere men","Men thinking sincerity matters to women");
+Gauge sinc_fem_gauge = new Gauge(radius, x_center, y_sinc, sinc2_3_fem, sinc1_s_mal, "Sincere women", "Women thinking sincerity matters to men", "Men seeking sincere women",false);
+Gauge sinc_mal_gauge = new Gauge(radius, x_right, y_sinc, sinc1_s_fem, sinc2_3_mal, "Sincere men", "Women seeking sincere men","Men thinking sincerity matters to women",true);
 
-Gauge intel_fem_gauge = new Gauge(radius, x_center, y_intel, intel2_3_fem, intel1_s_mal, "Intelligent women", "Women thinking intelligence matters \nto men", "Men seeking intelligent women");
-Gauge intel_mal_gauge = new Gauge(radius, x_right, y_intel, intel1_s_fem, intel2_3_mal, "Intelligent men", "Women seeking intelligent men","Men thinking intelligence matters to women");
+Gauge intel_fem_gauge = new Gauge(radius, x_center, y_intel, intel2_3_fem, intel1_s_mal, "Intelligent women", "Women thinking intelligence matters \nto men", "Men seeking intelligent women",false);
+Gauge intel_mal_gauge = new Gauge(radius, x_right, y_intel, intel1_s_fem, intel2_3_mal, "Intelligent men", "Women seeking intelligent men","Men thinking intelligence matters to women",true);
 
-Gauge fun_fem_gauge = new Gauge(radius, x_center, y_fun, fun2_3_fem, fun1_s_mal, "Funny women", "Women thinking humour matters to men", "Men seeking funny women");
-Gauge fun_mal_gauge = new Gauge(radius, x_right, y_fun, fun1_s_fem, fun2_3_mal, "Funny men", "Women seeking funny men","Men thinking humour matters to women");
+Gauge fun_fem_gauge = new Gauge(radius, x_center, y_fun, fun2_3_fem, fun1_s_mal, "Funny women", "Women thinking humour matters to men", "Men seeking funny women",false);
+Gauge fun_mal_gauge = new Gauge(radius, x_right, y_fun, fun1_s_fem, fun2_3_mal, "Funny men", "Women seeking funny men","Men thinking humour matters to women",true);
 
-Gauge amb_fem_gauge = new Gauge(radius, x_center, y_amb, amb2_3_fem, amb1_s_mal, "Ambitious women", "Women thinking ambition matters to men", "Men seeking ambitious women");
-Gauge amb_mal_gauge = new Gauge(radius, x_right, y_amb, amb1_s_fem, amb2_3_mal, "Ambitious men", "Women seeking ambitious men","Men thinking ambition matters to women");
+Gauge amb_fem_gauge = new Gauge(radius, x_center, y_amb, amb2_3_fem, amb1_s_mal, "Ambitious women", "Women thinking ambition matters to men", "Men seeking ambitious women",false);
+Gauge amb_mal_gauge = new Gauge(radius, x_right, y_amb, amb1_s_fem, amb2_3_mal, "Ambitious men", "Women seeking ambitious men","Men thinking ambition matters to women",true);
 
 PFont f;
 PFont bold_f;
+ArrayList<TextBox> textBoxes = new ArrayList<TextBox>();
+int indexCurrentlySelected = -1;
+boolean expecSelected = false;
+boolean stereoSelected = false;
+boolean allSelected = false;
 
 void setup() {
   size(1280,1024);
   surface.setResizable(true);
   f = createFont("Arial", 16, true);
   bold_f = createFont("Arial Bold", 16, true);
+  int box_height = 50;
+  int box_width = 200;
+  int x_textBox = (int)(x_center + x_right)/2 - (int)1.5*box_width;
+  int y_textBox = 20;
+  ArrayList<String> textbox_labels = new ArrayList<String>();
+  textbox_labels.add("Stereotypes");
+  textbox_labels.add("Actual expectations");
+  textbox_labels.add("Show all");
+  textbox_labels.add("Reset");
+  
+  int n_boxes = textbox_labels.size();
+  for (int i = 0; i < n_boxes; i++)
+  {
+    textBoxes.add(new TextBox(textbox_labels.get(i), x_textBox + i*box_width, y_textBox, box_width, box_height));
+  }
 }
 
+  
+  void updateTextBoxes() {
+    ///Checks if any text boxes are currently being hovered over
+    for (int i = 0; i < textBoxes.size(); i++)
+    {
+      TextBox tb = textBoxes.get(i);
+      int x = tb.getX();
+      int y = tb.getY();
+      int h = tb.getH();
+      int w = tb.getW();
+      if (mouseX >= x && mouseX <= x+w && mouseY >= y && mouseY <= y+h) {
+        textBoxes.get(i).setHovered(true);
+      }
+      else
+        textBoxes.get(i).setHovered(false);
+    }
+  }
+  
 void draw() {
+  stereoSelected = (indexCurrentlySelected == 0);
+  expecSelected = (indexCurrentlySelected == 1);
+  allSelected = (indexCurrentlySelected == 2);
   background(255);
   noFill();
+  updateTextBoxes();
+  for (int i = 0; i < textBoxes.size(); i++){
+    textBoxes.get(i).drawTextBox();
+  }
   attr_fem_gauge.update();
   attr_mal_gauge.update();
   sinc_fem_gauge.update();
@@ -78,18 +122,34 @@ void draw() {
   amb_fem_gauge.update();
   amb_mal_gauge.update();
 }
+
+void resetCounts(){
+  attr_fem_gauge.resetCount();
+  attr_mal_gauge.resetCount();
+  sinc_fem_gauge.resetCount();
+  sinc_mal_gauge.resetCount();
+  intel_fem_gauge.resetCount();
+  intel_mal_gauge.resetCount();
+  fun_fem_gauge.resetCount();
+  fun_mal_gauge.resetCount();
+  amb_fem_gauge.resetCount();
+  amb_mal_gauge.resetCount();  
+}
+
 class Gauge {
   float deg_1 = 0;
   float deg_2 = 0;
   float radius, x_center, y_center, red_1, green_1, blue_1, percent_limit_1, red_2, green_2, blue_2, percent_limit_2, proportion;
-  float percent = 0;
+  float percent_1;
+  float percent_2;
   String title;
   String description_1;
   String description_2;
   float gauge_border = 10;
   float text_distance = 35;
+  boolean leftExpec;
 
-  Gauge(float r, float x, float y, float l1, float l2, String tl, String des_1, String des_2) {
+  Gauge(float r, float x, float y, float l1, float l2, String tl, String des_1, String des_2, boolean expec) {
     radius = r;
     x_center = x;
     y_center = y;
@@ -105,8 +165,14 @@ class Gauge {
     title = tl;
     description_1 = des_1;
     description_2 = des_2;
+    leftExpec = expec;
   }
 
+  void resetCount(){
+    percent_1 = 0;
+    percent_2 = 0;
+  }
+  
   void percentDash(float percent) {
     float x_peak = x_center + radius*cos(PI + radians(1.8*percent));
     float y_peak = y_center + radius*sin(PI + radians(1.8*percent));
@@ -152,7 +218,23 @@ class Gauge {
     }
   }
 
-  void needle(float width, float deg, float R, float G, float B) {
+  void needle(float width, boolean one, float R, float G, float B) {
+    float deg = 0;
+    if (one){
+      if(percent_1 < 100) {
+          percent_1 ++;
+          deg_1 = percent_1 / 100 * percent_limit_1 * 1.8;
+        }
+      deg = deg_1;
+    }
+    else{
+      if(percent_2 < 100) {
+          percent_2 ++;
+          deg_2 = percent_2 / 100 * percent_limit_2 * 1.8;
+        }
+      deg = deg_2;
+    }
+      
     float x_1 = x_center + width*cos(PI/2 + radians(deg)) + gauge_depth*cos(radians(deg));
     float y_1 = y_center + width*sin(PI/2 + radians(deg)) + gauge_depth*sin(radians(deg));
     float x_2 = x_center + width*cos(3*PI/2 + radians(deg)) + gauge_depth*cos(radians(deg));
@@ -189,8 +271,20 @@ class Gauge {
     float y_1 = y_center - radius*2/3;
     float x_2 = x_center + radius + gauge_border + 30;
     float y_2 = y_center - radius/4;
-    box(x_1, y_1, red_1, green_1, blue_1, description_1);
-    box(x_2, y_2, red_2, green_2, blue_2, description_2);
+    if(stereoSelected){
+      if(leftExpec)
+        box(x_2, y_2, red_2, green_2, blue_2, description_2);
+      else
+        box(x_1, y_1, red_1, green_1, blue_1, description_1);
+    } else if (expecSelected){
+      if(!leftExpec)
+        box(x_2, y_2, red_2, green_2, blue_2, description_2);
+      else
+        box(x_1, y_1, red_1, green_1, blue_1, description_1);
+    }else if(allSelected){
+      box(x_1, y_1, red_1, green_1, blue_1, description_1);
+      box(x_2, y_2, red_2, green_2, blue_2, description_2);
+    }
   }
   
   void title(){
@@ -199,8 +293,9 @@ class Gauge {
     textFont(bold_f,title_size);
     text(title, x_center + radius + gauge_border + 30, y_center - radius);
   }
-  
-  void update() {    
+
+
+  void update() {
     boxes();
     fill(150);
     arc(x_center, y_center, 2*(radius + gauge_border), 2*(radius+gauge_border), PI, 2*PI, PIE);
@@ -214,15 +309,22 @@ class Gauge {
     arc(x_center, y_center, 2*radius, 2*radius, PI, 2*PI, PIE);
     noFill();
     arc(x_center, y_center, 0.9*radius, 0.9*radius, PI, 2*PI);
-    percents(); 
-    if (percent < 100) {
-      percent ++;
-      deg_1 = percent / 100 * percent_limit_1 * 1.8;
-      deg_2 = percent / 100 *percent_limit_2 * 1.8;
-    }
-    needle(gauge_width, deg_1, red_1, green_1, blue_1);
-    needle(gauge_width, deg_2, red_2, green_2, blue_2); 
+    percents();
     
+    if(allSelected){
+      needle(gauge_width, true, red_1, green_1, blue_1);
+      needle(gauge_width, false, red_2, green_2, blue_2); 
+    } else if(expecSelected){
+      if(leftExpec)
+        needle(gauge_width, true, red_1, green_1, blue_1);
+      else
+        needle(gauge_width, false, red_2, green_2, blue_2);
+    } else if(stereoSelected){
+      if(!leftExpec)
+        needle(gauge_width, true, red_1, green_1, blue_1);
+      else
+        needle(gauge_width, false, red_2, green_2, blue_2);
+    } 
     fill(255);
     ellipse(x_center, y_center, gauge_width, gauge_width);
     noFill();
@@ -232,11 +334,34 @@ class Gauge {
 }
 
 
-
 void mousePressed() {
-  if (mousePressed==true) {
-    float mousX=mouseX;
-    float mousY=mouseY;
-    println("mouseX = " + mousX + " mouseY =" + mousY);
+  checkSelectedTextBox();
+  resetCounts();
+}
+
+
+void checkSelectedTextBox() {
+  ///Checks if there are any text boxes being selected; if so, makes the necessary changes
+  boolean changeState = false;
+  int index_change = -1;
+  
+  //Sees if any boxes are currently being hovered over and gets the corresponding index
+  for (int i = 0; i < textBoxes.size(); i++)
+  {
+    if (textBoxes.get(i).isHovered())
+    {
+      changeState = true;
+      index_change = i;
+      break;
+    }
+  }
+  
+  //Uses the index from the previous step to make the necessary changes
+  if (index_change != -1)
+  {
+    textBoxes.get(index_change).setSelected(true);
+    if (indexCurrentlySelected != -1)
+      textBoxes.get(indexCurrentlySelected).setSelected(false);
+    indexCurrentlySelected = index_change;
   }
 }
