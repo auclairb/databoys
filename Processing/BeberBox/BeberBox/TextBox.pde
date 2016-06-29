@@ -71,5 +71,9 @@ class TextBox {
     return text;
   }
   
+  public void setLabel(String new_label) {
+    text = new_label;
+  }
+  
   
 }

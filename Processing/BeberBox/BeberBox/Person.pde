@@ -1,8 +1,8 @@
 class Person {
-  private String gender;
-  private String age;
-  private String race;
-  private String profession;
+  private String gender = "";
+  private String age = "";
+  private String race = "";
+  private String profession = "";
   private ArrayList<String> interests;
   
   private int x;
@@ -33,6 +33,19 @@ class Person {
   }
   public void addInterest(String interest) {
     this.interests.add(interest);
+  }
+  
+  public String getGender() {
+    return gender;
+  }
+  public String getAge() {
+    return age;
+  }
+  public String getRace() {
+    return race;
+  }
+  public String getProfession() {
+    return profession;
   }
   
   public void drawPerson() {

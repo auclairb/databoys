@@ -2,10 +2,19 @@ import java.util.ArrayList;
 
 Table table;
 ArrayList<TextBox> textBoxes = new ArrayList<TextBox>();
+ArrayList<TextBox> labelResultBoxes = new ArrayList<TextBox>();
+ArrayList<TextBox> resultBoxes = new ArrayList<TextBox>();
+
+Menu emptyMenuInput;
+Menu emptyMenuOutput;
+TextBox emptyBox;
+TextBox matchRateBox;
+
 ArrayList<Menu> menus = new ArrayList<Menu>();
 int indexCurrentlySelected = -1;
 
 Person p;
+Person m;
 String gender;
 String age;
 String race;
@@ -25,7 +34,7 @@ void setup() {
   println(" and has int_corr equal to " + table.get(int_corr, 0));
   
   int usable_width = 700;
-  int usable_height = 700;
+  int usable_height = 350;
   int corner_x = 50;
   int corner_y = 50;
   
@@ -39,9 +48,17 @@ void setup() {
   int n_boxes = textbox_labels.size();
   int box_height = usable_height/n_boxes;
   int box_width = 100;
+  
+  emptyBox = new TextBox("", 0, 0, 0, 0);
+  emptyMenuInput = new Menu(emptyBox, corner_x + box_width, corner_y, usable_width - box_width, usable_height, true);
+  emptyMenuOutput = new Menu(emptyBox, corner_x + 2*box_width, corner_y + usable_height + 25, usable_width - 2*box_width, usable_height, true);
+  matchRateBox = new TextBox("Match Rate: --", corner_x + 2*box_width + 25, corner_y + usable_height + 50, 4*box_width/2, 3*usable_height/10);
+  
   for (int i = 0; i < n_boxes; i++)
   {
     textBoxes.add(new TextBox(textbox_labels.get(i), corner_x, corner_y + box_height*i, box_width, box_height));
+    labelResultBoxes.add(new TextBox(textbox_labels.get(i), corner_x, corner_y + usable_height + 25 + box_height*i, box_width, box_height));
+    resultBoxes.add(new TextBox("--", corner_x + box_width, corner_y + usable_height + 25 + box_height*i, box_width, box_height));
   }
   
   menus.add(new Menu(textBoxes.get(0), corner_x + box_width, corner_y, usable_width - box_width, usable_height, true));
@@ -69,14 +86,20 @@ void setup() {
   menus.get(4).addButton("Lawyer", 10);
   menus.get(4).addButton("Doctor", 10);
   
-  p = new Person(500, 200, 200, 400);
+  p = new Person(usable_width + corner_x - 200, corner_y, 200, usable_height);
+  m = new Person(usable_width + corner_x - 200, corner_y + usable_height + 25, 200, usable_height);
 }
 
 void draw() {
   update(mouseX, mouseY);
+  emptyMenuInput.showMenu();
+  emptyMenuOutput.showMenu();
+  matchRateBox.drawTextBox();
   for (int i = 0; i < textBoxes.size(); i++)
   {
     textBoxes.get(i).drawTextBox();
+    labelResultBoxes.get(i).drawTextBox();
+    resultBoxes.get(i).drawTextBox();
   }
   for (int i = 0; i < menus.size(); i++)
   {
@@ -85,13 +108,13 @@ void draw() {
     }
   }
   p.drawBasicForm();
+  m.drawBasicForm();
 }
 
 void mousePressed() {
   ///Checks to see if any selection has to be made
   checkSelectedTextBox();
   checkSelectedButtonInMenu();
-
 }
 
 void checkSelectedTextBox() {
@@ -144,7 +167,7 @@ void checkSelectedButtonInMenu() {
     }
   }
   
-  //Uses the index from the previous step to make the necessary changes
+  //Uses the index from the previous step to make the necessary changes to person
   if (menu_index_change != -1 && button_index_change != -1) {
     String menu_label = menus.get(menu_index_change).getFatherLabel();
     menus.get(menu_index_change).selectButton(button_index_change);
@@ -164,9 +187,47 @@ void checkSelectedButtonInMenu() {
     else if (menu_label == "Interests") {
       p.addInterest(menus.get(menu_index_change).getButtons().get(button_index_change).getLabel());
     }
+    calculateOutput();
+    resultBoxes.get(0).setLabel(m.getGender());
+    resultBoxes.get(1).setLabel(m.getAge());
+    resultBoxes.get(3).setLabel(m.getRace());
+    resultBoxes.get(4).setLabel(m.getProfession());
   }
+  
 }
 
+void calculateOutput() {
+  if (p.getGender() == "F")
+    m.setGender("M");
+  else if (p.getGender() == "M")
+    m.setGender("F");
+  
+  m.setAge(p.getAge());
+  
+  if (p.getRace() == "Black") {
+    m.setRace("Black");
+    matchRateBox.setLabel("Match Rate: 60%");
+  }
+  else if (p.getRace() == "Asian") {
+    m.setRace("Caucasian");
+    matchRateBox.setLabel("Match Rate: 51%");
+  }
+  else if (p.getRace() == "Caucasian") {
+    if (p.getGender() == "M") {
+      m.setRace("Asian");
+      matchRateBox.setLabel("Match Rate: 54%");
+    }
+    else if (p.getGender() == "F") {
+      m.setRace("Caucasian");
+      matchRateBox.setLabel("Match Rate: 46%");
+    }
+  }
+  
+  if (p.getProfession() != "" && p.getRace() == "Asian")
+    m.setProfession("Engineer");
+  else if (p.getProfession() != "" && p.getRace() == "Caucasian")
+    m.setProfession("Lawyer");
+}
 
 void update(int mousex, int mousey) {
   updateTextBoxes(mousex, mousey);
