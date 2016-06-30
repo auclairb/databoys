@@ -74,6 +74,8 @@ void draw(){
   updateUniversity(mouseX,mouseY);
   
   if(indexCurrentlySelected==0){
+    maxMatch=0;
+    minMatch=2;
     for(int i = lengthBoth-19 ; i <= lengthBoth-2 ; i++){
       maxMatch = max(maxMatch,universityBoth[i].getMatch());
       minMatch = min(minMatch,universityBoth[i].getMatch());
@@ -84,6 +86,8 @@ void draw(){
       text("Top 20 rate match in universities for men and women",280,900);
     }
   } else if (indexCurrentlySelected==1){
+    maxMatch=0;
+    minMatch=2;
       for(int i = lengthWomen-19 ; i <= lengthWomen-2 ; i++){
         maxMatch = max(maxMatch,universityWomen[i].getMatch());
         minMatch = min(minMatch,universityWomen[i].getMatch());
@@ -94,6 +98,8 @@ void draw(){
         text("Top 20 rate match in universities for women",280,900);
        }
   } else if (indexCurrentlySelected==2){
+    maxMatch=0;
+    minMatch=2;
       for(int i = lengthMen-19 ; i <= lengthMen-2 ; i++){
         maxMatch = max(maxMatch,universityMen[i].getMatch());
         minMatch = min(minMatch,universityMen[i].getMatch());
